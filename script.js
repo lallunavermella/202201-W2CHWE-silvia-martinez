@@ -1,5 +1,5 @@
-const row = 2;
-const column = 2;
+const setRow = 10; // definides per l'usuari
+const setColumn = 10; // definides per l'usuari
 const newArrayGame = (rows, columns) => {
   const boardGame = [];
   for (let i = 0; i < rows; i++) {
@@ -10,6 +10,27 @@ const newArrayGame = (rows, columns) => {
   }
   return boardGame;
 };
-const boardGame = newArrayGame(row, column);
-console.log(boardGame);
+const boardGame = newArrayGame(setRow, setColumn);
+console.table(boardGame);
 
+class cell {
+  status;
+
+  row;
+
+  column;
+
+  neighbor;
+
+  constructor(status, row, column, neighbor) {
+    this.status = status;
+
+    this.row = row;
+
+    this.column = column;
+
+    this.neighbor = neighbor;
+  }
+}
+
+console.log(nextGeneration(boardGame));
