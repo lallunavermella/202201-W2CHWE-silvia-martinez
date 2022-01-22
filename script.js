@@ -13,23 +13,45 @@ const newArrayGame = (rows, columns) => {
 const boardGame = newArrayGame(setRow, setColumn);
 console.table(boardGame);
 
-class cell {
-  status;
+class CellDefault {
+  status = "";
 
   row;
 
   column;
 
-  neighbor;
+  neighborsAlive;
 
-  constructor(status, row, column, neighbor) {
+  constructor(status, row, column) {
     this.status = status;
 
     this.row = row;
 
     this.column = column;
 
-    this.neighbor = neighbor;
+  }
+
+  checkForAliveNeighbors () ={
+    
+  }
+}
+
+neighbors = () =>{
+  let neighborCell =  neighborCount();
+  if(cell.status === "alive"){
+    if(neighborCell < 2 || neighborCell > 3){
+      cell.status = "dead";
+    }else{
+      cell.status = "alive";
+    }
+
+  }else{
+    if(neighborCell === 3){
+      cell.status = "alive"
+    }else{
+      cell.status = "dead"
+    }
+
   }
 }
 
