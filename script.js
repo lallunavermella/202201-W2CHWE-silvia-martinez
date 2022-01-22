@@ -12,3 +12,4 @@ const newArrayGame = (rows, columns) => {
 };
 const boardGame = newArrayGame(row, column);
 console.log(boardGame);
+
