@@ -17,3 +17,5 @@ const newArrayGame = (rows, columns) => {
   return boardGame;
 };
 const boardGame = newArrayGame(row, column);
+console.log(boardGame);
+console.log(cellsAB);
