@@ -13,6 +13,17 @@ const newArrayGame = (rows, columns) => {
 const boardGame = newArrayGame(setRow, setColumn);
 console.table(boardGame);
 
+const countNeighbors = (row, column) => {
+  let aliveNeighbors = 0;
+  for (let i = -1; i < 2; i++) {
+    for (let j = -1; j < 2; i++) {
+      if (boardGame[row + i][column + j].status && i !== 0 && j !== 0) {
+        aliveNeighbors += 1;
+      }
+    }
+  }
+  return aliveNeighbors;
+};
 class CellDefault {
   status = "";
 
@@ -28,31 +39,12 @@ class CellDefault {
     this.row = row;
 
     this.column = column;
-
   }
 
-  checkForAliveNeighbors () ={
-    
-  }
+  checkForAliveNeighbors = () => {
+    const x = this.row;
+    const y = this.column;
+    countNeighbors(x, y);
+  };
 }
-
-neighbors = () =>{
-  let neighborCell =  neighborCount();
-  if(cell.status === "alive"){
-    if(neighborCell < 2 || neighborCell > 3){
-      cell.status = "dead";
-    }else{
-      cell.status = "alive";
-    }
-
-  }else{
-    if(neighborCell === 3){
-      cell.status = "alive"
-    }else{
-      cell.status = "dead"
-    }
-
-  }
-}
-
-console.log(nextGeneration(boardGame));
+console.log(CellDefault);
