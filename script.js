@@ -28,6 +28,7 @@ const countNeighbors = (row, column) => {
   }
   return aliveNeighbors;
 };
+
 class CellDefault {
   row;
   column;
@@ -44,6 +45,16 @@ class CellDefault {
     const x = this.row;
     const y = this.column;
     this.neighborsAlive = countNeighbors(x, y);
+  }
+
+  nextGeneration() {
+    if (this.status) {
+      if (this.neighborsAlive < 2 || this.neighborsAlive > 3) {
+        this.status = "";
+      }
+    } else if (this.neighborsAlive === 3) {
+      this.status = "alive";
+    }
   }
 }
 console.log(CellDefault);
