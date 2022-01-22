@@ -41,10 +41,10 @@ class CellDefault {
     this.column = column;
   }
 
-  checkForAliveNeighbors = () => {
+  checkForAliveNeighbors() {
     const x = this.row;
     const y = this.column;
-    countNeighbors(x, y);
-  };
+    this.neighborsAlive = countNeighbors(x, y);
+  }
 }
 console.log(CellDefault);
