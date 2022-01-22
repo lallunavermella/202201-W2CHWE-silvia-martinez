@@ -1,22 +1,26 @@
 const setRow = 10; // definides per l'usuari
 const setColumn = 10; // definides per l'usuari
+
 const newArrayGame = (rows, columns) => {
-  const boardGame = [];
+  const boardGame = [[]];
   for (let i = 0; i < rows; i++) {
     boardGame.push([]);
     for (let j = 0; j < columns; j++) {
-      boardGame[i][j] = false;
+      // eslint-disable-next-line no-use-before-define
+      boardGame[i][j] = new CellDefault(i, j);
     }
   }
   return boardGame;
 };
+
 const boardGame = newArrayGame(setRow, setColumn);
 console.table(boardGame);
 
 const countNeighbors = (row, column) => {
   let aliveNeighbors = 0;
+
   for (let i = -1; i < 2; i++) {
-    for (let j = -1; j < 2; i++) {
+    for (let j = -1; j < 2; j++) {
       if (boardGame[row + i][column + j].status && i !== 0 && j !== 0) {
         aliveNeighbors += 1;
       }
@@ -25,17 +29,12 @@ const countNeighbors = (row, column) => {
   return aliveNeighbors;
 };
 class CellDefault {
-  status = "";
-
   row;
-
   column;
-
+  status = "";
   neighborsAlive;
 
-  constructor(status, row, column) {
-    this.status = status;
-
+  constructor(row, column) {
     this.row = row;
 
     this.column = column;
