@@ -10,19 +10,30 @@ const newArrayGame = (rows, columns) => {
 };
 
 describe("Given a function newArrayGame", () => {
-  describe("When the function recives rows = 1 and column =2", () => {
-    test("Then retrun an a nested array [[false, false,],[false, false]]", () => {
+  describe("When the function recives rows = 2 and column =2", () => {
+    test("Then retrun an a nested array [[false, false],[false, false]]", () => {
       const rows = 2;
       const columns = 2;
-
       const boardGame = newArrayGame(rows, columns);
-
-      // Act
       const expectBoard = [
         [false, false],
         [false, false],
       ];
-      // Assert
+      expect(boardGame).toStrictEqual(expectBoard);
+    });
+  });
+  describe("When the function recives rows = 5 and column =5", () => {
+    test("Then retrun an a nested array [[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]]", () => {
+      const rows = 5;
+      const columns = 5;
+      const boardGame = newArrayGame(rows, columns);
+      const expectBoard = [
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+      ];
       expect(boardGame).toStrictEqual(expectBoard);
     });
   });
