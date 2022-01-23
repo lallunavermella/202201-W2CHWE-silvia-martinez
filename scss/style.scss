@@ -36,12 +36,17 @@ body {
   }
   .button--play-game {
     border: 2px solid $color_violet;
-    background-color: $color_green;
+    background-color: $color_yellow;
     width: 70px;
     height: 50px;
     color: $color_pink;
     box-shadow: 5px 2px 2px $color_orange;
     font-size: 18px;
+  }
+  .button--play-game:hover {
+    background-color: $color_green;
+    border: 2px solid $color_orange;
+    box-shadow: 5px 2px 2px $color_green;
   }
 }
 
