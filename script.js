@@ -1,12 +1,40 @@
-const setRow = 10; // definides per l'usuari
-const setColumn = 10; // definides per l'usuari
+const setRow = 3; // definides per l'usuari
+const setColumn = 3; // definides per l'usuari
+
+class CellDefault {
+  row;
+  column;
+  status = "";
+  neighborsAlive;
+
+  constructor(row, column) {
+    this.row = row;
+    this.column = column;
+  }
+
+  checkForAliveNeighbors() {
+    const x = this.row;
+    const y = this.column;
+    // eslint-disable-next-line no-use-before-define
+    this.neighborsAlive = countNeighbors(x, y);
+  }
+
+  nextGeneration() {
+    if (this.status) {
+      if (this.neighborsAlive < 2 || this.neighborsAlive > 3) {
+        this.status = "";
+      }
+    } else if (this.neighborsAlive === 3) {
+      this.status = "alive";
+    }
+  }
+}
 
 const newArrayGame = (rows, columns) => {
-  const boardGame = [[]];
+  const boardGame = [];
   for (let i = 0; i < rows; i++) {
     boardGame.push([]);
     for (let j = 0; j < columns; j++) {
-      // eslint-disable-next-line no-use-before-define
       boardGame[i][j] = new CellDefault(i, j);
     }
   }
@@ -14,7 +42,9 @@ const newArrayGame = (rows, columns) => {
 };
 
 const boardGame = newArrayGame(setRow, setColumn);
-console.table(boardGame);
+console.table(
+  boardGame.map((c) => c.map((cc) => (cc.status ? cc.status : "dead")))
+);
 
 const countNeighbors = (row, column) => {
   let aliveNeighbors = 0;
@@ -69,33 +99,3 @@ const countNeighbors = (row, column) => {
   }
   return aliveNeighbors;
 };
-
-class CellDefault {
-  row;
-  column;
-  status = "";
-  neighborsAlive;
-
-  constructor(row, column) {
-    this.row = row;
-
-    this.column = column;
-  }
-
-  checkForAliveNeighbors() {
-    const x = this.row;
-    const y = this.column;
-    this.neighborsAlive = countNeighbors(x, y);
-  }
-
-  nextGeneration() {
-    if (this.status) {
-      if (this.neighborsAlive < 2 || this.neighborsAlive > 3) {
-        this.status = "";
-      }
-    } else if (this.neighborsAlive === 3) {
-      this.status = "alive";
-    }
-  }
-}
-console.log(CellDefault);

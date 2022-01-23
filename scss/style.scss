@@ -1,0 +1,28 @@
+@import "_variables.scss";
+
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: $color_blue;
+  width: 100%;
+  margin: 0;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: $color_pink;
+
+  .header-title {
+    display: flex;
+    justify-content: center;
+  }
+  .header__description {
+    border-bottom: 1px solid $color_orange;
+    box-shadow: 8px 2px 2px $color_orange;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
