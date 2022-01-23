@@ -1,10 +1,15 @@
-const setRow = 3; // definides per l'usuari
-const setColumn = 3; // definides per l'usuari
+const setRow = 9; // definides per l'usuari
+const setColumn = 9; // definides per l'usuari
 
+/*  for (let i = 0; i < 3; i++) {
+  const element = document.createElement("div");
+  element.appendChild(document.createTextNode(""));
+  document.querySelector("#super-grid").appendChild(element);
+}  */
 class CellDefault {
   row;
   column;
-  status = "";
+  status = "deadd";
   neighborsAlive;
 
   constructor(row, column) {
@@ -22,7 +27,7 @@ class CellDefault {
   nextGeneration() {
     if (this.status) {
       if (this.neighborsAlive < 2 || this.neighborsAlive > 3) {
-        this.status = "";
+        this.status = "dead";
       }
     } else if (this.neighborsAlive === 3) {
       this.status = "alive";
@@ -34,17 +39,26 @@ const newArrayGame = (rows, columns) => {
   const boardGame = [];
   for (let i = 0; i < rows; i++) {
     boardGame.push([]);
+    const divOut = document.createElement("div");
+    divOut.id = `${i}`;
+    divOut.className = "divOut";
+
+    document.querySelector("#super-grid").appendChild(divOut);
+
     for (let j = 0; j < columns; j++) {
       boardGame[i][j] = new CellDefault(i, j);
+
+      const divInside = document.createElement("div");
+      divInside.id = `${i}-${j}`;
+      divInside.className = "divInside";
+
+      divOut.appendChild(divInside);
     }
   }
   return boardGame;
 };
 
 const boardGame = newArrayGame(setRow, setColumn);
-console.table(
-  boardGame.map((c) => c.map((cc) => (cc.status ? cc.status : "dead")))
-);
 
 const countNeighbors = (row, column) => {
   let aliveNeighbors = 0;
