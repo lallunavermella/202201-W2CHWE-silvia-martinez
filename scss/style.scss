@@ -26,3 +26,28 @@ body {
     align-items: center;
   }
 }
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  .grid-game {
+    border: 1px solid green;
+  }
+  .button--play-game {
+    border: 2px solid $color_violet;
+    background-color: $color_green;
+    width: 70px;
+    height: 50px;
+    color: $color_pink;
+    box-shadow: 5px 2px 2px $color_orange;
+    font-size: 18px;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: $color_pink;
+}
